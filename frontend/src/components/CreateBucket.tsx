@@ -36,7 +36,7 @@ const CreateBucket = ({
       <div className="window-body">
         <Sidebar UUIDs={UUIDs} />
         <div className="centered-content">
-          <h4>Welcome to Request Bucket!</h4>
+          <h4>Welcome to Hook Haven!</h4>
           {successMessage && (
             <div className="success">
               <strong>{successMessage}</strong>

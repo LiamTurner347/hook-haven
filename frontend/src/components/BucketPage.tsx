@@ -27,7 +27,7 @@ const BucketPage = () => {
       };
       fetchData();
     }
-  }, []);
+  }, [uuid]);
 
   return (
     <>
@@ -48,7 +48,7 @@ const BucketPage = () => {
                 Requests : <span id="requests_count">{requests.length}</span>
               </h4>
               <p>
-                Requests are collected at https://liamturner.dev/api/{uuid}
+                Requests are collected at {DOMAIN}/api/{uuid}
                 <kbd className="copy-url-btn">
                   <span
                     onClick={(e) => {
@@ -71,7 +71,7 @@ const BucketPage = () => {
         </div>
       </div>
       <hr></hr>
-      {requests && <List requests={requests}/>}
+      {requests && <List requests={requests} />}
       {!requests && <EmptyBucket uuid={uuid!} />}
     </>
   );

@@ -1,9 +1,8 @@
-
 interface RequestHeaderInfoProps {
-  headers: string,
+  headers: string;
 }
 
-export const RequestHeaderInfo = ({headers}: RequestHeaderInfoProps) => {
+export const RequestHeaderInfo = ({ headers }: RequestHeaderInfoProps) => {
   if (headers.length > 0) {
     const parsed = JSON.parse(headers); // object
     const entries = Object.entries(parsed);
@@ -20,12 +19,11 @@ export const RequestHeaderInfo = ({headers}: RequestHeaderInfoProps) => {
         </ul>
       </>
     );
-
   } else {
     return (
       <>
         <p>No headers available!</p>
       </>
-    )
+    );
   }
 };
