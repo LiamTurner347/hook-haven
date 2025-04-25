@@ -1,4 +1,4 @@
-CREATE DATABASE requestbucket;
+CREATE DATABASE hookhaven;
 
 CREATE TABLE bucket (
 	id serial PRIMARY KEY,

@@ -2,18 +2,18 @@ import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
-console.log(process.env.MONGO_URL);
+// console.log(process.env.MONGO_URL);
 
 mongoose
   .connect(process.env.MONGO_URL!)
   .then(() => {
-    console.log("connected to MongoDB");
+    console.log("Connected to MongoDB");
   })
   .catch((error: unknown) => {
     if (error instanceof Error) {
-      console.log("error connecting to MongoDB:", error.message);
+      console.log("Error connecting to MongoDB:", error.message);
     } else {
-      console.log("error connecting to MongoDB:", error);
+      console.log("Error connecting to MongoDB:", error);
     }
   });
 
@@ -21,7 +21,7 @@ const bodySchema = new mongoose.Schema(
   {
     body: { type: String, required: true },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 bodySchema.set("toJSON", {

@@ -1,6 +1,6 @@
 import express from "express";
 
-import pgQuery from "../db/models/postgresModel";
+import { pgQuery } from "../db/models/postgresModel";
 import Body from "../db/models/mongoModel";
 
 import { genId } from "../utils/utils";
@@ -21,7 +21,7 @@ webRouter.post("", async (req, res) => {
         ON CONFLICT (uuid) DO NOTHING
         RETURNING uuid;
           `,
-        [id],
+        [id]
       );
 
       if (!result || result.rowCount === 0) {
@@ -55,7 +55,7 @@ webRouter.get("/:id", async (req, res) => {
           bucket.uuid = $1
        ORDER BY
           request.request_time DESC;`,
-      [uuid],
+      [uuid]
     );
 
     if (!queryResult) {

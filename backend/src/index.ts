@@ -1,9 +1,10 @@
+import dotenv from "dotenv";
+dotenv.config();
+
+import { initializeDatabase } from "./db/models/postgresModel";
 import express from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 import webRouter from "./routes/webRoutes";
 import requestRouter from "./routes/requestRoutes";
@@ -22,6 +23,24 @@ app.get("*", (req, res) => {
   res.status(404).send("Route not found");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const startServer = async () => {
+  try {
+    // Initialize PostgreSQL database
+    const dbInitialized = await initializeDatabase();
+
+    if (!dbInitialized) {
+      console.error("Failed to initialize database, exiting...");
+      process.exit(1);
+    }
+
+    // Start the Express server after database initialization
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to initialize database:", error);
+    process.exit(1);
+  }
+};
+
+startServer();

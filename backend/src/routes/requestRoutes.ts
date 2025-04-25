@@ -1,6 +1,6 @@
 import express from "express";
 
-import pgQuery from "../db/models/postgresModel";
+import { pgQuery } from "../db/models/postgresModel";
 import Body from "../db/models/mongoModel";
 
 const requestRouter = express.Router();
@@ -27,7 +27,7 @@ requestRouter.all("/:id", async (req, res) => {
           $4,
           $5
         WHERE EXISTS (SELECT 1 FROM bucket WHERE uuid = $1);`, // checks that uuid stored in the db before insert attempted
-      [uuid, method, headers, req.originalUrl, savedBody._id.toString()],
+      [uuid, method, headers, req.originalUrl, savedBody._id.toString()]
     );
 
     // if request table updated return 200
