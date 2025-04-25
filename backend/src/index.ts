@@ -25,7 +25,6 @@ app.get("*", (req, res) => {
 
 const startServer = async () => {
   try {
-    // Initialize PostgreSQL database
     const dbInitialized = await initializeDatabase();
 
     if (!dbInitialized) {
@@ -33,7 +32,6 @@ const startServer = async () => {
       process.exit(1);
     }
 
-    // Start the Express server after database initialization
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });

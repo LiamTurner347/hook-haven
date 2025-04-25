@@ -9,7 +9,7 @@ const port = Number(process.env.POSTGRES_PORT);
 const config = { user, host, database, port };
 Object.assign(config, password ? { password } : {});
 
-console.log(config);
+// console.log(config);
 
 // Check if the application database exists and create it if not
 export async function checkDatabase(): Promise<boolean> {
